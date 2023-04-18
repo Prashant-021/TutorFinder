@@ -152,7 +152,7 @@ class TutorDashboard extends Component {
               <Moment format='DD/MM/YYYY'>{item.from}</Moment>
             </td>
             <td className='hide-sm'>
-              {item.to == null || item.to == undefined ? (
+              {item.to === null || item.to === undefined ? (
                 "Now"
               ) : (
                 <Moment format='DD/MM/YYYY'>{item.to}</Moment>
@@ -181,7 +181,7 @@ class TutorDashboard extends Component {
               <Moment format='DD/MM/YYYY'>{item.from}</Moment>
             </td>
             <td className='hide-sm'>
-              {item.to == null || item.to == undefined ? (
+              {item.to === null || item.to === undefined ? (
                 "Now"
               ) : (
                 <Moment format='DD/MM/YYYY'>{item.to}</Moment>

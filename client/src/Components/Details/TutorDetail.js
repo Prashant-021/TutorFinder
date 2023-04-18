@@ -16,7 +16,7 @@ class TutorDetail extends Component {
     this.setState({ ...this.state, tutors: this.props.tutors });
     const queryParams = new URLSearchParams(window.location.search);
     const id = queryParams.get("id");
-    const index = this.state.tutors.findIndex((i) => i._id == id);
+    const index = this.state.tutors.findIndex((i) => i._id ===id);
     this.setState({ ...this.state, currentTutor: this.state.tutors[index] });
   }
   render() {
@@ -30,7 +30,6 @@ class TutorDetail extends Component {
           <div className='profile-top bg-primary1 p-2'>
             <img
               height={"200px"}
-              height={"210px"}
               className='round-img my-1'
               src={tutor.photo_url}
               alt=''
@@ -73,7 +72,7 @@ class TutorDetail extends Component {
               })}
             </div>
           </div>
-          {tutor.experience == null || tutor.experience.length == 0 ? (
+          {tutor.experience ===null || tutor.experience.length ===0 ? (
             <p></p>
           ) : (
             <div className='profile-exp bg-white p-2'>
@@ -85,7 +84,7 @@ class TutorDetail extends Component {
                     <p>
                       <i className='fas fa-calendar-day'></i>{" "}
                       <Moment format='DD/MM/YYYY'>{exp.from}</Moment> -{" "}
-                      {exp.to == null || exp.to == undefined ? (
+                      {exp.to ===null || exp.to ===undefined ? (
                         "Now"
                       ) : (
                         <Moment format='DD/MM/YYYY'>{exp.to}</Moment>
@@ -108,7 +107,7 @@ class TutorDetail extends Component {
               })}
             </div>
           )}
-          {tutor.education == null || tutor.education.length == 0 ? (
+          {tutor.education ===null || tutor.education.length ===0 ? (
             <p></p>
           ) : (
             <div className='profile-edu bg-white p-2'>
@@ -120,7 +119,7 @@ class TutorDetail extends Component {
                     <p>
                       <i className='fas fa-calendar-day'></i>{" "}
                       <Moment format='DD/MM/YYYY'>{edu.from}</Moment> -{" "}
-                      {edu.to == null || edu.to == undefined ? (
+                      {edu.to ===null || edu.to ===undefined ? (
                         "Now"
                       ) : (
                         <Moment format='DD/MM/YYYY'>{edu.to}</Moment>
@@ -154,7 +153,7 @@ class TutorDetail extends Component {
       );
     }
 
-    if (this.props.loading || tutor == null) tutor = <Spinner />;
+    if (this.props.loading || tutor ===null) tutor = <Spinner />;
 
     return (
       <div>

@@ -17,11 +17,11 @@ class CourseDetails extends Component {
     const queryParams = new URLSearchParams(window.location.search);
     const tid = queryParams.get("tid");
     const cid = queryParams.get("cid");
-    const index = this.state.tutors.findIndex((i) => i._id == tid);
+    const index = this.state.tutors.findIndex((i) => i._id ===tid);
     const current_tutor = this.state.tutors[index];
 
     const courses = current_tutor.course;
-    const course_index = courses.findIndex((c) => c._id == cid);
+    const course_index = courses.findIndex((c) => c._id ===cid);
     const current_course = courses[course_index];
     this.setState({
       ...this.state,
@@ -36,7 +36,7 @@ class CourseDetails extends Component {
 
     let details = this.state.currentCourse;
     let links =
-      localStorage.role == "student" ? (
+      localStorage.role ==="student" ? (
         <Link to='/student/dashboard' className='btn btn-light'>
           <i className='fas fa-arrow-left'></i> Back To Profiles
         </Link>
@@ -114,7 +114,7 @@ class CourseDetails extends Component {
       );
     }
 
-    if (this.props.loading || details == null) details = <Spinner />;
+    if (this.props.loading || details ===null) details = <Spinner />;
 
     return <div>{details}</div>;
   }

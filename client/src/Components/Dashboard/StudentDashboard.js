@@ -28,7 +28,7 @@ class StudentDashboard extends Component {
 
   onChangeHandler(e) {
     const s = e.target.value;
-    if (s == null || s == "")
+    if (s === null || s === "")
       this.setState({
         ...this.state,
         searchResult: this.state.tutors,
@@ -41,7 +41,7 @@ class StudentDashboard extends Component {
           const title = c.title.toUpperCase();
           return title.includes(s.toUpperCase());
         });
-        return course != null && course != undefined && course.length != 0;
+        return course !== null && course !== undefined && course.length !== 0;
       });
       console.log(newSearch);
       this.setState({ ...this.state, searchResult: newSearch, search: s });
@@ -67,7 +67,7 @@ class StudentDashboard extends Component {
       return t;
     });
     console.log(objs);
-    if (objs != null && objs != undefined) {
+    if (objs !== null && objs !== undefined) {
       objs.sort((a, b) =>
         a.rating > b.rating ? 1 : b.rating > a.rating ? -1 : 0
       );
@@ -79,7 +79,7 @@ class StudentDashboard extends Component {
     let objs = this.state.searchResult.map((t) => {
       return t;
     });
-    if (objs != null && objs != undefined) {
+    if (objs !== null && objs !== undefined) {
       objs.sort((a, b) =>
         a.rating < b.rating ? 1 : b.rating < a.rating ? -1 : 0
       );
@@ -91,7 +91,7 @@ class StudentDashboard extends Component {
     let objs = this.state.searchResult.map((t) => {
       return t;
     });
-    if (objs != null && objs != undefined) {
+    if (objs !== null && objs !== undefined) {
       objs.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
       this.setState({ ...this.state, searchResult: objs, sort: "atoz" });
     }
@@ -101,7 +101,7 @@ class StudentDashboard extends Component {
       return t;
     });
     console.log(objs);
-    if (objs != null && objs != undefined) {
+    if (objs !== null && objs !== undefined) {
       objs.sort((a, b) => (a.name < b.name ? 1 : b.name < a.name ? -1 : 0));
       this.setState({ ...this.state, searchResult: objs, sort: "ztoa" });
     }
@@ -122,10 +122,10 @@ class StudentDashboard extends Component {
 
   sorting = () => {
     const s = this.state.sort;
-    if (s == "atoz") this.sortNameA();
-    else if (s == "ztoa") this.sortNameD();
-    else if (s == "ltoh") this.sortRatingA();
-    else if (s == "htol") this.sortRatingD();
+    if (s === "atoz") this.sortNameA();
+    else if (s === "ztoa") this.sortNameD();
+    else if (s === "ltoh") this.sortRatingA();
+    else if (s === "htol") this.sortRatingD();
   };
 
   filterRating1 = async () => {
@@ -153,7 +153,7 @@ class StudentDashboard extends Component {
   };
 
   filterRating4 = async (e) => {
-    if (e.target.value == "Select") {
+    if (e.target.value === "Select") {
       const newResult = this.state.tutors;
       await this.setState({ ...this.state, searchResult: newResult });
       await this.sorting();
@@ -162,7 +162,7 @@ class StudentDashboard extends Component {
         const course = t.course.filter((c) => {
           return c.title.toUpperCase().includes(e.target.value.toUpperCase());
         });
-        return course != null && course != undefined && course.length != 0;
+        return course !== null && course !== undefined && course.length !== 0;
       });
       await this.setState({
         ...this.state,
@@ -175,7 +175,7 @@ class StudentDashboard extends Component {
   };
 
   filterRating4clone = async () => {
-    if (this.state.course == "Select") {
+    if (this.state.course === "Select") {
       const newResult = this.state.searchResult;
       await this.setState({ ...this.state, searchResult: newResult });
       await this.sorting();
@@ -186,7 +186,7 @@ class StudentDashboard extends Component {
             .toUpperCase()
             .includes(this.state.course.toUpperCase());
         });
-        return course != null && course != undefined && course.length != 0;
+        return course !== null && course !== undefined && course.length !== 0;
       });
       await this.setState({
         ...this.state,
@@ -206,13 +206,12 @@ class StudentDashboard extends Component {
     }
 
     let profiles = null;
-    if (this.state.searchResult != null) {
+    if (this.state.searchResult !== null) {
       profiles = this.state.searchResult.map((t) => {
-        return t.availability_status == "NO" ? null : (
+        return t.availability_status === "NO" ? null : (
           <div key={t._id} className='profile bg-light'>
             <img
               height={"200px"}
-              height={"210px"}
               className='round-img'
               src={t.photo_url}
               alt=''
@@ -314,7 +313,7 @@ class StudentDashboard extends Component {
             </h3>
             <button
               className={
-                this.state.sort == "ltoh" ? "btn btn-primary" : "btn btn-light"
+                this.state.sort === "ltoh" ? "btn btn-primary" : "btn btn-light"
               }
               onClick={this.sortRatingA}
             >
@@ -322,7 +321,7 @@ class StudentDashboard extends Component {
             </button>
             <button
               className={
-                this.state.sort == "htol" ? "btn btn-primary" : "btn btn-light"
+                this.state.sort === "htol" ? "btn btn-primary" : "btn btn-light"
               }
               onClick={this.sortRatingD}
             >
@@ -330,7 +329,7 @@ class StudentDashboard extends Component {
             </button>
             <button
               className={
-                this.state.sort == "atoz" ? "btn btn-primary" : "btn btn-light"
+                this.state.sort === "atoz" ? "btn btn-primary" : "btn btn-light"
               }
               onClick={this.sortNameA}
             >
@@ -338,7 +337,7 @@ class StudentDashboard extends Component {
             </button>
             <button
               className={
-                this.state.sort == "ztoa" ? "btn btn-primary" : "btn btn-light"
+                this.state.sort === "ztoa" ? "btn btn-primary" : "btn btn-light"
               }
               onClick={this.sortNameD}
             >
@@ -404,7 +403,7 @@ class StudentDashboard extends Component {
               </h3>
               <button
                 className={
-                  this.state.star == 4.5 ? "btn btn-primary" : "btn btn-light"
+                  this.state.star === 4.5 ? "btn btn-primary" : "btn btn-light"
                 }
                 onClick={this.filterRating1}
               >
@@ -412,7 +411,7 @@ class StudentDashboard extends Component {
               </button>
               <button
                 className={
-                  this.state.star == 4 ? "btn btn-primary" : "btn btn-light"
+                  this.state.star === 4 ? "btn btn-primary" : "btn btn-light"
                 }
                 onClick={this.filterRating2}
               >
@@ -420,7 +419,7 @@ class StudentDashboard extends Component {
               </button>
               <button
                 className={
-                  this.state.star == 3 ? "btn btn-primary" : "btn btn-light"
+                  this.state.star === 3 ? "btn btn-primary" : "btn btn-light"
                 }
                 onClick={this.filterRating3}
               >
